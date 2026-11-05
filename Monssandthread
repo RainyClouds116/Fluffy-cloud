@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moss &amp; Thread — handmade textiles, prints and candles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F0EA;--surface:#FAF9F5;--ink:#2F3A33;--muted:#667067;--line:#DAD9CF;
+  --accent:#4F6B55;--on-accent:#fff;--focus:#4F6B55;
+  --t-sage:#D5DFD0;--t-sand:#E8DECD;--t-mist:#D3DCDD;--t-rose:#E6D3CB;--t-lichen:#DEDFC2;
+  --a:#6F8B73;--b:#B59A74;--c:#7F96A0;--d:#B58C80;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1E2420;--surface:#272E29;--ink:#E8EAE2;--muted:#A3ABA2;--line:#38403A;
+    --accent:#93B79A;--on-accent:#1E2420;--focus:#93B79A;
+    --t-sage:#33423A;--t-sand:#43392E;--t-mist:#2F3E41;--t-rose:#46372F;--t-lichen:#3F4130;
+    --a:#A9C4AE;--b:#D2B78F;--c:#A7BDC6;--d:#D4ABA0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1E2420;--surface:#272E29;--ink:#E8EAE2;--muted:#A3ABA2;--line:#38403A;
+  --accent:#93B79A;--on-accent:#1E2420;--focus:#93B79A;
+  --t-sage:#33423A;--t-sand:#43392E;--t-mist:#2F3E41;--t-rose:#46372F;--t-lichen:#3F4130;
+  --a:#A9C4AE;--b:#D2B78F;--c:#A7BDC6;--d:#D4ABA0;
+}
+:root[data-palette="dusk"]{--bg:#ECEEF0;--surface:#F8F9FA;--ink:#2B3440;--muted:#626C78;--line:#D5D9DE;--accent:#4C6580;--focus:#4C6580;--t-sage:#D6DEE6;--t-sand:#E2DEEA;--t-mist:#D0DCDF;--t-rose:#E4DAE0;--t-lichen:#D9DFE0;--a:#6B88A3;--b:#A79BB8;--c:#7FA0A4;--d:#B79AA6}
+:root[data-palette="blush"]{--bg:#F3EDEA;--surface:#FBF8F6;--ink:#3A2F32;--muted:#75666A;--line:#E3D8D5;--accent:#8A5A66;--focus:#8A5A66;--t-sage:#E8D5D6;--t-sand:#EADFD0;--t-mist:#DCD8DE;--t-rose:#EBD2CC;--t-lichen:#DDE0CF;--a:#B07A86;--b:#C4A57F;--c:#9C8CA6;--d:#C08C80}
+:root[data-palette="oat"]{--bg:#EFEBE2;--surface:#F9F6EF;--ink:#353226;--muted:#6E6A5B;--line:#DDD7C8;--accent:#6B6B3A;--focus:#6B6B3A;--t-sage:#DDDFC4;--t-sand:#E9DEC6;--t-mist:#D9DDD3;--t-rose:#E6D6C6;--t-lichen:#D9DDB8;--a:#8A8F55;--b:#B79A62;--c:#8C9C86;--d:#B9886A}
+@media (prefers-color-scheme:dark){
+:root[data-palette="dusk"]:not([data-theme="light"]){--bg:#1C2128;--surface:#252B33;--ink:#E6E9EE;--muted:#9FA9B5;--line:#343C46;--accent:#8FB0D0;--focus:#8FB0D0;--on-accent:#1C2128;--t-sage:#2E3A47;--t-sand:#37344A;--t-mist:#2B3F42;--t-rose:#40343D;--t-lichen:#343D3F;--a:#9DBBD8;--b:#BDB0D4;--c:#95BABD;--d:#D0AEBC}
+:root[data-palette="blush"]:not([data-theme="light"]){--bg:#261F21;--surface:#302729;--ink:#F0E6E4;--muted:#B3A3A6;--line:#433739;--accent:#D4A0AC;--focus:#D4A0AC;--on-accent:#261F21;--t-sage:#4A3438;--t-sand:#483D31;--t-mist:#3D3842;--t-rose:#4D3731;--t-lichen:#3C4034;--a:#D8A0AC;--b:#D8BC92;--c:#B8A8C4;--d:#D6A294}
+:root[data-palette="oat"]:not([data-theme="light"]){--bg:#25241C;--surface:#2F2D24;--ink:#ECE8DA;--muted:#AEA995;--line:#42402F;--accent:#BDBF84;--focus:#BDBF84;--on-accent:#25241C;--t-sage:#3E4030;--t-sand:#4A412C;--t-mist:#383D33;--t-rose:#473B2F;--t-lichen:#404328;--a:#C5C98A;--b:#D8BC85;--c:#A9BCA3;--d:#D8A584}
+}
+.pal{position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);z-index:25;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.9rem;font-weight:500;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.pal button{width:26px;height:26px;border-radius:50%;border:2px solid var(--surface);background:linear-gradient(135deg,var(--s1) 50%,var(--s2) 50%);cursor:pointer;padding:0}
+.pal button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--sans)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15;margin:0;letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font:600 1rem var(--sans);padding:12px 24px;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;height:68px}
+.logo{font:600 1.35rem var(--serif);text-decoration:none;margin-right:auto}
+.bar nav{display:flex;gap:22px}
+.bar nav a{text-decoration:none;color:var(--muted);font-weight:500}
+.bar nav a:hover{color:var(--ink)}
+.cartbtn{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:8px 16px;font:500 .95rem var(--sans);cursor:pointer}
+.cartbtn b{background:var(--accent);color:var(--on-accent);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:.8rem;padding:0 6px}
+@media (max-width:560px){.bar{gap:14px}}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:64px 0 56px}
+.hero h1{font-size:clamp(2.3rem,6vw,3.9rem);max-width:12ch}
+.hero p{max-width:46ch;color:var(--muted);margin:20px 0 28px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.collage .tile{aspect-ratio:1;border-radius:22px;display:grid;place-items:center;padding:14%}
+.collage .tile:nth-child(2){margin-top:28px}.collage .tile:nth-child(3){margin-top:-28px}
+@media (max-width:760px){.hero{grid-template-columns:1fr;padding-top:36px}.collage{order:-1}.collage .tile{padding:18%}.collage .tile:nth-child(n){margin:0}.collage .tile:nth-child(3),.collage .tile:nth-child(4){display:none}}
+
+section{padding:56px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.head h2{font-size:clamp(1.8rem,4vw,2.4rem)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:7px 16px;font:500 .95rem var(--sans);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.art{aspect-ratio:1/.9;display:grid;place-items:center;padding:14%}
+.art svg,.tile svg{width:100%;height:100%}
+.info{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.info h3{font-size:1.2rem}
+.info .maker{color:var(--muted);font-size:.92rem}
+.buy{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px}
+.price{font:600 1.1rem var(--sans)}
+.add{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:7px 16px;font:600 .92rem var(--sans);cursor:pointer}
+.add:hover{background:var(--accent);color:var(--on-accent)}
+
+.story{background:var(--t-sage);border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.story h2{font-size:clamp(1.8rem,4vw,2.4rem)}
+.story p{margin:0 0 14px;max-width:52ch}
+@media (max-width:760px){.story{grid-template-columns:1fr;padding:28px 22px;gap:18px}}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.fact{border-top:2px solid var(--line);padding-top:14px}
+.fact h3{font-size:1.2rem;margin-bottom:6px}
+.fact p{margin:0;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:44px 0 96px}
+.foot{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media (max-width:760px){.foot{grid-template-columns:1fr}}
+footer h3{font-size:1.3rem;margin-bottom:8px}
+footer p{margin:0 0 12px;color:var(--muted);max-width:44ch}
+.news{display:flex;gap:8px;flex-wrap:wrap}
+.news input{flex:1;min-width:180px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:12px 18px;font:400 1rem var(--sans)}
+.msg{min-height:1.6em;color:var(--accent);font-weight:500;margin-top:10px}
+
+.scrim{position:fixed;inset:0;background:rgba(20,26,22,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--surface);z-index:50;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);visibility:hidden}
+.drawer.on{transform:none;visibility:visible}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:1.5rem}
+.x{border:0;background:transparent;color:var(--ink);font-size:1.6rem;line-height:1;cursor:pointer;padding:4px 10px}
+.items{flex:1;overflow:auto;padding:8px 20px}
+.empty{color:var(--muted);padding:24px 0}
+.row{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.row .thumb{width:56px;height:56px;border-radius:12px;padding:8px}
+.row .thumb svg{width:100%;height:100%}
+.row h3{font:600 .98rem var(--sans)}
+.qty{display:flex;align-items:center;gap:8px;margin-top:4px;color:var(--muted)}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1rem;cursor:pointer}
+.df{padding:18px 20px;border-top:1px solid var(--line)}
+.sub{display:flex;justify-content:space-between;font-weight:600;margin-bottom:12px}
+.df .btn{width:100%}
+.note{color:var(--muted);font-size:.9rem;margin:10px 0 0;min-height:1.4em}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top">Moss &amp; Thread</a>
+    <nav aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a href="#makers">Our makers</a>
+    </nav>
+    <button class="cartbtn" id="openCart" aria-label="Open cart">Cart <b id="count">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <h1>Handmade things for slow, quiet homes</h1>
+      <p>Woven textiles, prints, candles and jewelry, each made in small batches by Ray and Aisley.</p>
+      <div class="cta">
+        <a class="btn" href="#shop">Browse the shop</a>
+        <a class="btn ghost" href="#makers">Meet the makers</a>
+      </div>
+    </div>
+    <div class="collage" id="collage" aria-hidden="true"></div>
+  </div>
+
+  <section id="shop">
+    <div class="wrap">
+      <div class="head">
+        <h2>The shop</h2>
+        <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="makers">
+    <div class="wrap">
+      <div class="story">
+        <h2>Meet Ray and Aisley</h2>
+        <div>
+          <p>Hello, and welcome to Moss &amp; Thread! We&rsquo;re Ray and Aisley, two high school students who love making things by hand. What started as a shared hobby has grown into a little shop we&rsquo;re proud of, filled with pieces made with patience, curiosity and a lot of heart.</p>
+          <p>We believe that thoughtfully made things can bring a little calm and beauty to everyday life. Because everything is crafted by hand, no two pieces are exactly alike, and the small differences in color and texture are part of what makes yours special.</p>
+          <p>We&rsquo;re still finding our way, and every purchase helps us learn, create and save for what comes next. Thank you so much for being part of our story.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <h3>Moss &amp; Thread</h3>
+      <p>Handmade textiles, prints and candles by Ray and Aisley.</p>
+    </div>
+    <div>
+      <h3>New pieces, once a month</h3>
+      <p>Get a short note when a new batch arrives.</p>
+      <form class="news" id="news">
+        <input type="email" id="email" placeholder="Your email address" aria-label="Email address" required>
+        <button class="btn" type="submit">Sign up</button>
+      </form>
+      <div class="msg" id="newsMsg" role="status"></div>
+    </div>
+  </div>
+</footer>
+
+<div class="pal" id="pal" role="group" aria-label="Color theme"><span>Colors</span>
+  <button data-p="sage" aria-label="Sage" aria-pressed="true" style="--s1:#8FA68E;--s2:#E8DECD"></button>
+  <button data-p="dusk" aria-label="Dusk" aria-pressed="false" style="--s1:#6B88A3;--s2:#D6DEE6"></button>
+  <button data-p="blush" aria-label="Blush" aria-pressed="false" style="--s1:#B07A86;--s2:#EBD2CC"></button>
+  <button data-p="oat" aria-label="Oat" aria-pressed="false" style="--s1:#8A8F55;--s2:#E9DEC6"></button>
+</div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="dh"><h2>Your cart</h2><button class="x" id="closeCart" aria-label="Close cart">&times;</button></div>
+  <div class="items" id="items"></div>
+  <div class="df">
+    <div class="sub"><span>Subtotal</span><span id="subtotal">$0</span></div>
+    <button class="btn" id="checkout">Check out</button>
+    <p class="note" id="note" role="status"></p>
+  </div>
+</aside>
+
+<script>
+const SHAPES = {
+  mug:'<rect x="24" y="30" width="44" height="46" rx="10" fill="var(--a)"/><path d="M68 40h6a9 9 0 0 1 0 22h-6" fill="none" stroke="var(--a)" stroke-width="6" stroke-linecap="round"/><circle cx="38" cy="46" r="1.6" fill="var(--b)"/><circle cx="50" cy="56" r="1.6" fill="var(--b)"/><circle cx="42" cy="64" r="1.6" fill="var(--b)"/>',
+  vase:'<path d="M42 20h16v14c0 6 16 12 16 32 0 10-6 16-24 16S26 76 26 66c0-20 16-26 16-32z" fill="var(--c)"/><path d="M50 20c-2-10 4-14 8-16" fill="none" stroke="var(--a)" stroke-width="3" stroke-linecap="round"/>',
+  weave:'<rect x="14" y="16" width="72" height="5" rx="2.5" fill="var(--b)"/><rect x="22" y="26" width="56" height="12" rx="3" fill="var(--a)"/><rect x="22" y="40" width="56" height="12" rx="3" fill="var(--d)"/><rect x="22" y="54" width="56" height="12" rx="3" fill="var(--c)"/><path d="M26 70v14M34 70v10M42 70v14M50 70v10M58 70v14M66 70v10M74 70v14" stroke="var(--b)" stroke-width="2.5" stroke-linecap="round"/>',
+  towel:'<rect x="20" y="22" width="60" height="22" rx="4" fill="var(--c)"/><rect x="20" y="48" width="60" height="22" rx="4" fill="var(--b)"/><rect x="28" y="30" width="44" height="3" fill="var(--a)"/><rect x="28" y="56" width="44" height="3" fill="var(--a)"/>',
+  print:'<rect x="20" y="14" width="60" height="72" rx="3" fill="none" stroke="var(--b)" stroke-width="4"/><path d="M50 74V36M50 62c-12-2-16-12-14-20 10 0 14 8 14 20zM50 54c10-2 14-10 12-18-9 0-12 7-12 18z" fill="var(--a)" stroke="var(--a)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>',
+  fern:'<rect x="18" y="18" width="64" height="64" rx="3" fill="none" stroke="var(--d)" stroke-width="4"/><path d="M50 74c0-20 4-34 18-46" fill="none" stroke="var(--a)" stroke-width="3" stroke-linecap="round"/><path d="M52 62l-10-4M54 52l-12-6M58 42l-10-6M62 34l-6-6M54 62l10-6M58 52l10-6M62 42l8-4" stroke="var(--a)" stroke-width="3" stroke-linecap="round"/>',
+  candle:'<rect x="26" y="42" width="48" height="40" rx="9" fill="var(--b)"/><rect x="26" y="42" width="48" height="8" rx="4" fill="var(--d)"/><path d="M50 40v-8" stroke="var(--a)" stroke-width="3" stroke-linecap="round"/><path d="M50 14c7 7 7 14 0 17-7-3-7-10 0-17z" fill="var(--d)"/>',
+  ear:'<path d="M26 74V50a12 12 0 0 1 24 0v24z" fill="var(--d)"/><path d="M52 74V50a12 12 0 0 1 24 0v24z" fill="var(--a)"/><circle cx="38" cy="40" r="3" fill="var(--b)"/><circle cx="64" cy="40" r="3" fill="var(--b)"/>'
+};
+const svg = k => '<svg viewBox="0 0 100 100" aria-hidden="true">'+SHAPES[k]+'</svg>';
+
+const PRODUCTS = [
+  /* Add products here, e.g. {id:1,name:'Product name',maker:'Ray and Aisley',cat:'Category',price:25,shape:'mug',tint:'sage'} */
+];
+const CATS = [] /* add category names here to bring back the filter tabs */;
+const $ = id => document.getElementById(id);
+const money = n => '$' + n.toFixed(n % 1 ? 2 : 0);
+const cart = new Map();
+let filter = 'All', lastFocus = null;
+
+$('collage').innerHTML = ['weave','print','candle','fern'].map((s,i)=>
+  '<div class="tile" style="background:var(--t-'+['sage','sand','rose','mist'][i]+')">'+svg(s)+'</div>').join('');
+
+function renderFilters(){
+  $('filters').innerHTML = CATS.map(c=>'<button class="chip" aria-pressed="'+(c===filter)+'" data-c="'+c+'">'+c+'</button>').join('');
+}
+function renderGrid(){
+  const list = PRODUCTS.filter(p=>filter==='All'||p.cat===filter);
+  if(!list.length){ $('grid').innerHTML = '<p class="empty">New pieces are on their way. Check back soon.</p>'; return; }
+  $('grid').innerHTML = list.map(p=>
+    '<article class="card"><div class="art" style="background:var(--t-'+p.tint+')">'+svg(p.shape)+'</div>'+
+    '<div class="info"><h3>'+p.name+'</h3><span class="maker">'+p.maker+'</span>'+
+    '<div class="buy"><span class="price">'+money(p.price)+'</span>'+
+    '<button class="add" data-id="'+p.id+'" aria-label="Add '+p.name+' to cart">Add to cart</button></div></div></article>').join('');
+}
+function renderCart(){
+  let n = 0, total = 0, html = '';
+  cart.forEach((q,id)=>{
+    const p = PRODUCTS.find(x=>x.id===id); n += q; total += q*p.price;
+    html += '<div class="row"><div class="thumb" style="background:var(--t-'+p.tint+')">'+svg(p.shape)+'</div>'+
+      '<div><h3>'+p.name+'</h3><div class="qty"><button data-d="-1" data-id="'+id+'" aria-label="Remove one">&minus;</button>'+q+
+      '<button data-d="1" data-id="'+id+'" aria-label="Add one">+</button></div></div><strong>'+money(q*p.price)+'</strong></div>';
+  });
+  $('items').innerHTML = html || '<p class="empty">Your cart is empty. Add something from the shop to get started.</p>';
+  $('count').textContent = n;
+  $('subtotal').textContent = money(total);
+  $('checkout').disabled = !n;
+  $('checkout').style.opacity = n ? 1 : .5;
+}
+function openCart(){
+  lastFocus = document.activeElement;
+  $('drawer').classList.add('on'); $('scrim').classList.add('on');
+  $('drawer').setAttribute('aria-hidden','false'); $('closeCart').focus();
+}
+function closeCart(){
+  $('drawer').classList.remove('on'); $('scrim').classList.remove('on');
+  $('drawer').setAttribute('aria-hidden','true'); $('note').textContent='';
+  if(lastFocus) lastFocus.focus();
+}
+$('filters').addEventListener('click',e=>{
+  const b = e.target.closest('.chip'); if(!b) return;
+  filter = b.dataset.c; renderFilters(); renderGrid();
+  document.querySelector('.chip[aria-pressed="true"]').focus();
+});
+$('grid').addEventListener('click',e=>{
+  const b = e.target.closest('.add'); if(!b) return;
+  const id = +b.dataset.id; cart.set(id,(cart.get(id)||0)+1);
+  renderCart(); b.textContent = 'Added'; setTimeout(()=>{b.textContent='Add to cart'},1200);
+});
+$('items').addEventListener('click',e=>{
+  const b = e.target.closest('button[data-d]'); if(!b) return;
+  const id = +b.dataset.id, q = (cart.get(id)||0) + (+b.dataset.d);
+  q>0 ? cart.set(id,q) : cart.delete(id); renderCart();
+});
+$('openCart').onclick = openCart; $('closeCart').onclick = closeCart; $('scrim').onclick = closeCart;
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && $('drawer').classList.contains('on')) closeCart(); });
+$('checkout').onclick = ()=>{ $('note').textContent = 'This is a demo shop, so checkout isn\u2019t connected to payments yet.'; };
+$('news').addEventListener('submit',e=>{
+  e.preventDefault();
+  $('newsMsg').textContent = 'Thanks for signing up. Your first note arrives with the next batch.';
+  $('email').value = '';
+});
+function setPal(p){
+  p==='sage' ? document.documentElement.removeAttribute('data-palette') : document.documentElement.setAttribute('data-palette',p);
+  document.querySelectorAll('#pal button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.p===p)));
+  try{localStorage.setItem('pal',p)}catch(e){}
+}
+$('pal').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) setPal(b.dataset.p);});
+let saved='sage'; try{saved=localStorage.getItem('pal')||'sage'}catch(e){}
+setPal(saved);
+renderFilters(); renderGrid(); renderCart();
+</script>
+</body>
+</html>
